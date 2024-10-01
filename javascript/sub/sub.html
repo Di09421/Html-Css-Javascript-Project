@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+<form action="" onsubmit="return validation()">
+  <input type="text" id="username" name="username" placeholder="enter your username">
+  <span id="usernameerr"></span><br><br>
+  <input type="password" id="password" name="password" placeholder="enter your password"><span id="passworderr"></span><br><br>
+  <input type="submit" >
+</form>
+<script>
+  let username = document.getElementById("username");
+  let password = document.getElementById("password");
+  let username_error = document.getElementById("usernameerr");
+  let password_error = document.getElementById("passworderr");
+  let flag = 1;
+  function validation(){
+    if(username.value == ""){
+      username_error.innerHTML = "please fill username";
+      username_error.style.color = "red";
+      flag = 0;
+    }else if(username.value.length < 3 | username.value.length >= 20){
+      username_error.innerHTML = "enter minimum 3 character & maximum 20";
+      username_error.style.color = "red";
+      flag = 0;
+    }else{
+      username_error.innerHTML = "";
+      flag = 1;
+    }
+    if(password.value == ""){
+      password_error.innerHTML = "please fill password";
+      password_error.style.color = "red";
+      flag = 0;
+    }else if(password.value.length < 3 | password.value.length >= 20){
+      password_error.innerHTML = "enter minimum 3 character & maximum 20";
+      password_error.style.color = "red";
+      flag = 0;
+    }else{
+      password_error.innerHTML = "";
+      flag = 1;
+    }
+    if(flag){
+      return true;
+    }else{
+      return false;
+    }
+  }
+</script>
+</body>
+</html>

@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="dom.js">
+</head>
+<body>
+    <h1 style="color: pink";id="st" class="hea">This is html page</h1>
+    <p id="p1">Hello World!</p>
+    <script>
+        const new_h1=document.createElement("h1");
+        const new_text=document.createTextNode("btps is centere of eciiiiii")
+        new_h1.appendChild(new_text)
+        const curr=document.getElementById('st');
+         document.body.insertBefore(new_h1,curr)
+
+        const anch=document.createElement('a');
+        const anlin=document.createTextNode("Link")
+        anch.appendChild(anlin)
+
+        const cur=document.querySelector("#st")
+        document.body.insertBefore(anch,cur)
+
+        const a=document.getElementsByTagName('a');
+
+        new_h1.remove()
+
+        document.getElementById("p1").innerHTML = "New text!";
+        document.getElementById("p1").style.Color="orange";
+
+ </script>       
+</body>
+</html>

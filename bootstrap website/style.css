@@ -1,0 +1,38 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+.hero-section {
+    background: url('https://m.media-amazon.com/images/I/71+17bVYHxL._AC_UF1000,1000_QL80_.jpg') no-repeat center center/cover;
+    color: white;
+    padding: 100px 0;
+}
+
+.hero-section h1 {
+    font-size: 3rem;
+}
+
+.menu-section {
+    padding: 50px 0;
+}
+
+.menu-section .card {
+    margin-bottom: 30px;
+}
+
+.about-section {
+    padding: 50px 0;
+    background-color: #f8f9fa;
+}
+
+.contact-section {
+    padding: 50px 0;
+}
+
+footer {
+    padding: 20px 0;
+    background-color: #343a40;
+    color: white;
+}

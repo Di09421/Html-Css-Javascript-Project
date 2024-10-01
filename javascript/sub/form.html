@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <div id="form-err"></div>
+  <form action="" onsubmit="return myform()">
+    Name: <input type="text" name="name" id="fname" oninput="checkName()">
+    <span id="nameErr"></span><br><br>
+    User Name: <input type="text" name="username" id="username" oninput="checkUsername()">
+    <span id="usernameErr"></span><br><br>
+
+    Email: <input type="email" name="email" id="email" oninput="checkEmail()">
+    <span id="emailErr"></span><br><br>
+
+    Phone: <input type="text" name="phone" id="phone" oninput="checkPhone()">
+    <span id="phoneErr"></span><br><br>
+
+    Password: <input type="password" name="password" id="password" oninput="checkPassword()">
+    <ul>
+      <li id="upper">Upper case</li>
+      <li id="lower">Lower case</li>
+      <li id="digit">Digit</li>
+      <li id="special">Special Charecter</li>
+    </ul>
+    <span id="passworderr"></span><br><br>
+
+    Gender: <input type="radio" name="gender">Male
+    <input type="radio" name="gender">female
+    <input type="radio" name="gender">other<br><br>
+
+    Courses: <input type="checkbox" name="course" value="html">HTML
+    <input type="checkbox" name="course" value="css">CSS
+    <input type="checkbox" name="course" value="bootstrap">Bootstrap
+    <input type="checkbox" name="course">JavaScript
+    <input type="checkbox" name="course">React
+    <input type="checkbox" name="course">NodeJs
+    <input type="checkbox" name="course">MongoDB
+
+    <br><br>
+
+    Select city: <select name="city" id="city">
+      <option value="0"></option>
+      <option value="knpur">Kanpur</option>
+      <option value="unnao">Unnao</option>
+      <option value="lucknow">Lucknow</option>
+    </select><br><br>
+
+    <input type="submit">
+  </form>
+
+
+  <script>
+
+function checkName(){
+      let name = document.getElementById("fname");
+      let err = document.getElementById("nameErr")
+      let regex = /^[a-zA-z ]{3,20}$/
+
+      if(regex.test(name.value)){
+        err.innerHTML = "valid name"
+        err.style.color = "green"
+      }else{
+        err.innerHTML = "invalid name"
+        err.style.color = "red"
+      }
+    }
+
+    function checkUsername(){
+      let username = document.getElementById("username");
+      let err = document.getElementById("usernameErr")
+      let regex = /^[a-zA-z0-9._-]{3,15}$/
+
+      if(regex.test(username.value)){
+        err.innerHTML = "valid username"
+        err.style.color = "green"
+      }else{
+        err.innerHTML = "invalid username"
+        err.style.color = "red"
+      }
+    }
+    function checkPhone(){
+      let phone = document.getElementById("phone");
+      let err = document.getElementById("phoneErr")
+      let regex = /^\d{10,12}$/
+      if(regex.test(phone.value)){
+        err.innerHTML = "valid number"
+        err.style.color = "green"
+      }else{
+        err.innerHTML = "invalid number"
+        err.style.color = "red"
+      }
+    }
+    function checkEmail(){
+      let email = document.getElementById("email").value;
+      let err = document.getElementById("emailErr");
+      let exp = /^[a-zA-Z0-9.-]+@[a-zA-Z0-9]+\.[a-zA-z]+$/
+
+      if(exp.test(email)){
+        err.innerHTML = "valid email"
+        err.style.color = "green"
+      }
+      else{
+        err.innerHTML = "invalid email"
+        err.style.color = "red"
+      }
+    }
+
+    function checkPassword(){
+      let password = document.getElementById("password").value
+      let err = document.getElementById("passworderr");
+      let exp = /^[\w\W]{8,20}$/
+
+      let upper = document.getElementById("upper")
+      let lower = document.getElementById("lower")
+      let digit = document.getElementById("digit")
+      let special = document.getElementById("special")
+
+      let upperCase = /[A-Z]/
+      let lowerCase = /[a-z]/
+      let Digit = /[0-9]/
+      let specialChar = /[@#$%&]/
+
+      if(upperCase.test(password)){
+        upper.style.color = "green"
+      }
+      if(lowerCase.test(password)){
+        lower.style.color = "green"
+      }
+
+      if(Digit.test(password)){
+        digit.style.color = "green"
+      }
+
+      if(specialChar.test(password)){
+        special.style.color = "green"
+      }
+
+       if(!exp.test(password)){
+         err.innerHTML = "min 8 & max 20 char";
+       err.style.color = "red"
+       }else{
+         err.innerHTML = "valid password"
+        err.style.color = "green"
+       }
+    }
+
+    function myform(){
+      let name = document.getElementById("fname");
+      let username = document.getElementById("username");
+      let email = document.getElementById("email")
+      let phone = document.getElementById("phone")
+      let password = document.getElementById("password")
+    // let gender = document.getElementById("gender").value
+
+      let err = document.getElementById("form-err");
+
+      if(name.value == "" || username.value == "" || email.value == "" || phone.value == "" || password.value == ""){
+        err.innerHTML = "please fill out all fields"
+        err.style.color = "red"
+        return false;
+      }
+
+      let genders = document.querySelectorAll("input[name='gender']");
+      let gender = null;
+
+      for( gndr of genders){
+        if(gndr.checked){
+          gender = gndr.value;
+        }
+      }
+
+      if(gender == null){
+        err.innerHTML = "please select your gender"
+        err.style.color = "red"
+        return false;
+      }
+
+
+      let courses = document.querySelectorAll("input[name='course']");
+      let course = null;
+
+      for(language of courses){
+        if(language.checked == true){
+          course += language.value + ","  
+        }
+      }
+
+      if(course == null){
+        err.innerHTML = "please select your course"
+        err.style.color = "red"
+        return false;
+      }
+
+      let city = document.getElementById("city")
+    
+      if(city.value == "0"){
+        err.innerHTML = "please select your city"
+        err.style.color = "red"
+        return false;
+      }
+      else{
+        return true
+      }
+    }
+
+  </script>
+</body>
+</html>

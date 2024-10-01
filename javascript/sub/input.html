@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <form action="">
+        Full Name: <input type="text" id="fullname" name="fullname" oninput="namevalidate()">
+        <span id="nameError"></span><br><br>
+        User Name: <input type="text" id="username" name="username" oninput="usernamevalidate()">
+        <span id="usernameError"></span><br><br>
+        <input type="submit">
+    </form>
+    <script>
+        function namevalidate() {
+            var name = document.getElementById("fullname").value;
+            var nameErr = document.getElementById("nameError");
+            var exp = /^[a-zA-Z ]+$/;
+            if (exp.test(name)) {
+                nameErr.innerHTML = "valid name";
+                nameErr.style.color = "green";
+            } else if (name.length < 3 || name.length > 20) {
+                nameErr.innerHTML = "invalid name";
+                nameErr.style.color = "red";
+            } else {
+                nameErr.innerHTML = "invalid name";
+                nameErr.style.color = "red";
+            }
+        }
+
+        function usernamevalidate() {
+            var username = document.getElementById("username").value;
+            var usernameErr = document.getElementById("usernameError");
+            var exp = /^[a-zA-Z]+$/;
+            if (exp.test(username)) {
+                if (username.length >= 3 && username.length <= 20) {
+                    usernameErr.innerHTML = "valid username";
+                    usernameErr.style.color = "green";
+                } else {
+                    usernameErr.innerHTML = "invalid username";
+                    usernameErr.style.color = "red";
+                }
+            } else {
+                usernameErr.innerHTML = "invalid username";
+                usernameErr.style.color = "red";
+            }
+        }
+    </script>
+</body>
+</html>

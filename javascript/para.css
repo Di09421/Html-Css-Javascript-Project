@@ -1,0 +1,14 @@
+.container {
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+p {
+  text-align: left; /* Default alignment */
+}
+
+.dark-mode {
+  background-color: black;
+  color: white;
+}
